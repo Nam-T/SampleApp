@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
-  def new
+  def new  
+    render json: User.all
   end
 end
