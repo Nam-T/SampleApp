@@ -1,8 +1,13 @@
 class StaticPagesController < ApplicationController
-  def home
-    render json: ["Users":{"Name":"vtnam","age":"21"}]
+  def home 
   end
 
   def help
+  end
+
+  def about
+  end
+
+  def contact
   end
 end
