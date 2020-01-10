@@ -17,8 +17,12 @@ class ActiveSupport::TestCase
 
   # Log in as a particular user.
   def log_in_as(user)
-    session[:user_id] = user.id
+    # session[:user_id] = user.id
+    # post login_path, params: { session: { email: user.email,
+    #                                             ​password: password } }
   end
+
+  
 end
 
 
