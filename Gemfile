@@ -32,6 +32,9 @@ gem 'jquery-ui-rails'
 gem 'faker'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
+gem "rubocop",  "~> 0.54.0", require: false
+gem 'carrierwave'
+gem 'mini_magick'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
@@ -54,6 +57,7 @@ end
 
 group :production do
   gem 'pg', '1.1.4'
+  gem 'fog'
 end
 
 group :test do
