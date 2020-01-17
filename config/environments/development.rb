@@ -60,15 +60,29 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
+  ### config mailer local ### 
   config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.delivery_method = :test
+  # config.action_mailer.delivery_method = :test
   #host = 'example.com' # Don't use this literally; use your local dev host instead
   host = 'localhost:3000'
-  # Use this on the cloud IDE.
+  # # Use this on the cloud IDE.
   config.action_mailer.default_url_options = { host: host, protocol: 'http' }
   # config.action_mailer.perform_caching = false
   # Use this if developing on localhost.
   # config.action_mailer.default_url_options = { host: host, protocol: 'http' }
+
+  ### config mailer gmail ###
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address: 'smtp.gmail.com',
+    port: 587,
+    # domain:  'example.com',
+    user_name: 'sample.app.bunbu@gmail.com',
+    # password:  'sample@123',
+    password: 'yvrmobjqbfwfgtgy',
+    authentication: 'plain',
+    enable_starttls_auto: true  
+  }
 end
 
 # Rails.application.config.action_mailer.default_url_options = Rails.application.default_url_options
