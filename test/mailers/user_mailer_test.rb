@@ -24,4 +24,11 @@ class UserMailerTest < ActionMailer::TestCase
     assert_match CGI.escape(user.email),  mail.body.encoded
   end
 
+  test "weekly_statistics" do
+    user = users(:michael)
+    mail = UserMailer.weekly_statistics(user)
+    assert_equal "Weekly Statistics", mail.subject
+    assert_equal [user.email], mail.to
+    assert_equal ["noreply@example.com"], mail.from
+  end
 end

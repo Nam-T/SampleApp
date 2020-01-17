@@ -1,0 +1,5 @@
+<h1>Weekly statistics</h1>
+<p>Hi <%= @user.name %>, last week you had:</p>
+<p><%= @user.following_post_count %> new post of people you follow</p>
+<p><%= Relationship.where(followed_id:@user.id).where('created_at >= ?', 1.week.ago).count %> new follow</p>
+<p><%= @user.microposts.where('created_at >= ?', 1.week.ago).count %> post</p>

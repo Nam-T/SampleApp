@@ -22,4 +22,10 @@ class UserMailer < ApplicationMailer
     @user = user
     mail to: @user.email, subject: "Password reset"
   end
+
+  ####
+  def  weekly_statistics(user)
+    @user = user
+    mail to: @user.email, subject: "Weekly Statistics"
+  end
 end

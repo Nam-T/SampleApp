@@ -15,4 +15,10 @@ class UserMailerPreview < ActionMailer::Preview
     UserMailer.password_reset(user)
   end
 
+  #Preview this email at http://localhost:3000/rails/mailers/user_mailer/weekly_statistics
+  def weekly_statistics
+    user = User.first
+    UserMailer.weekly_statistics(user)
+  end
+
 end

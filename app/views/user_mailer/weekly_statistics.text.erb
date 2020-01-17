@@ -1,0 +1,4 @@
+Hi <%= @user.name %>
+<%= @user.following_post_count %> new post of people you follow
+<%= Relationship.where(followed_id:@user.id).where('created_at >= ?', 1.week.ago).count %> new follow
+<%= @user.microposts.where('created_at >= ?', 1.week.ago).count %> post
