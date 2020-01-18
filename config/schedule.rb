@@ -24,7 +24,7 @@ require_relative "environment"
 set :environment, Rails.env
 set :output, "#{path}/log/cron_log.log"
 
-every 1.minute do
+every :sunday, at: '11:59 PM' do
 #   command "/usr/bin/some_great_command"
 #   runner "User.last.send_weekly_statistics_mail"
 #   rake "some:great:rake:task"
