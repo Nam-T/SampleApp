@@ -3,8 +3,9 @@ namespace :send_email do
   
     task weekly: :environment do
       User.all.each do |user|
-        user.send_weekly_statistics_mail
+        UserMailer.weekly_statistics(user).deliver_now
       end
-        # User.last.send_weekly_statistics_mail
+      
+      # User.last.send_weekly_statistics_mail
     end
   end

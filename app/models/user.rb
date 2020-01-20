@@ -71,21 +71,21 @@ class User < ApplicationRecord
     UserMailer.password_reset(self).deliver_now
   end
 
-  def send_weekly_statistics_mail
-    UserMailer.weekly_statistics(self).deliver_now
-  end
-
   # Returns true if a password reset has expired.
   def password_reset_expired?
     reset_sent_at < 2.hours.ago
   end
 
   def following_post_count
-    count = 0
-    self.following.each do |user|
-      count += user.microposts.where('created_at >= ?', 1.week.ago).count
-    end
-    return count
+    self.following.inject(0) {|sum, number| sum + number.microposts.count}
+  end
+
+  def new_follow_count
+    Relationship.where(followed_id:self.id).where('created_at >= ?', 1.week.ago).count
+  end
+
+  def post_count
+    self.microposts.where('created_at >= ?', 1.week.ago).count
   end
 
   # See "Following users" for the full implementation.
