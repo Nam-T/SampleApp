@@ -76,6 +76,18 @@ class User < ApplicationRecord
     reset_sent_at < 2.hours.ago
   end
 
+  def following_post_count
+    self.following.inject(0) {|sum, number| sum + number.microposts.count}
+  end
+
+  def new_follow_count
+    Relationship.where(followed_id:self.id).where('created_at >= ?', 1.week.ago).count
+  end
+
+  def post_count
+    self.microposts.where('created_at >= ?', 1.week.ago).count
+  end
+
   # See "Following users" for the full implementation.
   def feed
     # Micropost.where("user_id = ?", id)
