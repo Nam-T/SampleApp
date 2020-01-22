@@ -35,11 +35,7 @@ gem 'bootstrap-will_paginate'
 gem "rubocop",  "~> 0.54.0", require: false
 gem 'carrierwave'
 gem 'mini_magick'
-<<<<<<< HEAD
-# gem 'ovirt-engine-sdk'
-=======
 gem 'whenever', require: false
->>>>>>> issue-#1-mô-tả-1-chút-nội-dung
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
