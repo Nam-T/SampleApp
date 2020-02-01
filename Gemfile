@@ -37,7 +37,6 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'whenever', require: false
 
-gem 'figaro'
 gem "devise"
 gem 'omniauth'
 gem "omniauth-facebook"
