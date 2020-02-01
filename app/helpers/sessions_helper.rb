@@ -57,4 +57,18 @@ module SessionsHelper
   def store_location
     session[:forwarding_url] = request.original_url if request.get?
   end
+
+  def new_provider_user(auth_hash)
+    User.new :name => auth_hash["info"]["name"],
+                  :email => auth_hash["info"]["email"],
+                  :password_digest => Devise.friendly_token[0,20],
+                  :activated => true,
+                  :activated_at => Time.zone.now
+ 
+  end
+
+  def provider_login(user)
+    log_in user
+    redirect_back_or user
+  end
 end
