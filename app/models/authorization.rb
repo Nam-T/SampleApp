@@ -1,4 +1,4 @@
 class Authorization < ApplicationRecord
     belongs_to :user
-  validates :provider, :uid, :presence => true
+  validates :provider, :uid, :user_id ,:presence => true
 end

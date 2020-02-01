@@ -50,4 +50,12 @@ class UserTest < ActiveSupport::TestCase
     michael.unfollow(archer)
     assert_not michael.following?(archer)
   end
+
+  test "associated authorization should be destroyed" do
+    @user.save
+    @user.authorizations.create!(provider: "facebook", uid: "My String")
+    assert_difference 'Authorization.count', -1 do
+      @user.destroy
+    end
+  end
 end
