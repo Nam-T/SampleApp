@@ -36,7 +36,7 @@ gem "rubocop",  "~> 0.54.0", require: false
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'whenever', require: false
-
+gem 'figaro'
 gem "devise"
 gem 'omniauth'
 gem "omniauth-facebook"
