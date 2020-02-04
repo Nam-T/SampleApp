@@ -33,15 +33,14 @@ class SessionsController < ApplicationController
     auth_hash = request.env['omniauth.auth']
     @authorization = Authorization.find_by_provider_and_uid(auth_hash["provider"], auth_hash["uid"])
     user = User.find_by(email: auth_hash["info"]["email"])
-    if @authorization
-      provider_login user
-    else
+    if @authorization == nil
       if user == nil
         user = new_provider_user(auth_hash)
       end
-      user.authorizations.build :provider => auth_hash["provider"], :uid => auth_hash["uid"]
+      user.authorizations.build(:provider => auth_hash["provider"], :uid => auth_hash["uid"])
       user.save
-      provider_login user
     end
+    provider_login user
+
   end
 end
