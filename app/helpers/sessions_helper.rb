@@ -59,11 +59,11 @@ module SessionsHelper
   end
 
   def new_provider_user(auth_hash)
-    User.new :name => auth_hash["info"]["name"],
-                  :email => auth_hash["info"]["email"],
-                  :password_digest => Devise.friendly_token[0,20],
-                  :activated => true,
-                  :activated_at => Time.zone.now
+    User.new name: auth_hash["info"]["name"],
+                  email: auth_hash["info"]["email"],
+                  password_digest: Devise.friendly_token[0,20],
+                  activated: true,
+                  activated_at: Time.zone.now
  
   end
 
