@@ -69,6 +69,12 @@ class UsersController < ApplicationController
     render 'show_follow'
   end
 
+  def download_zip_csv
+    export_csv = ExportCsvService.new current_user
+    compressed_filestream = export_csv.create_zip
+    compressed_filestream.rewind
+    send_data compressed_filestream.read, filename: "#{current_user.name}-#{Date.today}-CSV.zip"
+  end
 
   private
 

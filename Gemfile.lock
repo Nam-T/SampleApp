@@ -575,6 +575,7 @@ DEPENDENCIES
   rails-controller-testing
   rspec-rails
   rubocop (~> 0.54.0)
+  rubyzip
   sass-rails (>= 6)
   selenium-webdriver
   spring

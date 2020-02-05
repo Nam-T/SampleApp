@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   # get  'static_pages/contact'
   get  '/signup',  to: 'users#new'
   get  '/show', to: 'users#show'
+  post  '/download_csv', to: 'users#download_zip_csv'
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
