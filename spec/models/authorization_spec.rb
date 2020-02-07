@@ -1,7 +1,12 @@
 require "rails_helper"
 RSpec.describe User, :type => :model do
   before(:all) do
-    @auth = build(:authorization)
+    @user = create(:user)
+    @auth = create(:authorization)
+  end
+
+  after(:all) do
+    @user.destroy
   end
       
   it "is valid with valid attributes" do
