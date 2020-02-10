@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_01_125921) do
+ActiveRecord::Schema.define(version: 2020_02_07_085334) do
 
   create_table "authorizations", force: :cascade do |t|
     t.string "provider"
@@ -18,6 +18,20 @@ ActiveRecord::Schema.define(version: 2020_02_01_125921) do
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.integer "parent_id"
+    t.integer "user_id", null: false
+    t.integer "micropost_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "picture"
+    t.string "content"
+    t.index ["micropost_id"], name: "index_comments_on_micropost_id"
+    t.index ["parent_id"], name: "index_comments_on_parent_id"
+    t.index ["user_id", "micropost_id"], name: "index_comments_on_user_id_and_micropost_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "microposts", force: :cascade do |t|
@@ -56,5 +70,7 @@ ActiveRecord::Schema.define(version: 2020_02_01_125921) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "comments", "microposts"
+  add_foreign_key "comments", "users"
   add_foreign_key "microposts", "users"
 end
