@@ -1,0 +1,3 @@
+$("#comment-<%= @comment_id%>").remove();
+$("#micropost-<%= @micropost.id%> #comment-count").empty();
+$("#micropost-<%= @micropost.id%> #comment-count").append(<%= @micropost.comments.count%> + " bình luận")

@@ -1,0 +1,3 @@
+var comment = $(`<%= render 'comment', comment:@comment%>`);
+$("#edit-comment-<%= @comment.id%>").after(comment);
+$("#edit-comment-<%= @comment.id%>").remove();

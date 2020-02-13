@@ -1,0 +1,12 @@
+var edit_comment = $(`<%= render 'shared/comment_form',micropost: @micropost%>`);
+edit_comment.attr('id', 'edit-comment-<%= @comment.id%>');
+$("#comment-<%= @comment.id%>").after(edit_comment);
+$("#comment-<%= @comment.id%>").remove();
+$('.send-comment').unbind("keypress");
+$('.send-comment').on('keypress', e => {
+  if (e.keyCode == 13) {
+    e.target.form.dispatchEvent(new Event('submit', {bubbles: true}));
+    e.preventDefault();
+    return false;
+  }
+});

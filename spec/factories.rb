@@ -23,7 +23,7 @@ FactoryBot.define do
     content {"My String"}
     user_id {1}
     micropost_id {1}
-    parent_id {0}
+    # parent_id {0}
   end
 
   factory :reply do
@@ -32,5 +32,9 @@ FactoryBot.define do
     user_id {1}
     micropost_id {1}
     parent_id {1}
+  end
+
+  factory :invalid_comment, parent: :comment do
+    content {nil}
   end
 end
