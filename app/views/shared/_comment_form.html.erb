@@ -1,6 +1,6 @@
 <span class="composer">
   <span class="gravatar-icon">
-    <%= gravatar_for @user %>
+    <%= gravatar_for current_user %>
   </span>
   <span class="comment-form">
     <%= form_for(@comment||micropost.comments.build,remote:true) do |f| %>

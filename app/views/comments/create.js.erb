@@ -1,4 +1,4 @@
-<%if !@comment.id.nil?%>
+<%if @comment.id.present?%>
   $("#micropost-<%= @micropost.id%> .comments").append($(`<%= render @comment%>`)); 
   $("#micropost-<%= @micropost.id%> textarea").val('');
   $("#micropost-<%= @micropost.id%> #comment_picture").val('');
