@@ -1,0 +1,16 @@
+<span class="composer">
+  <span class="gravatar-icon">
+    <%= gravatar_for current_user %>
+  </span>
+  <span class="comment-form">
+    <%= form_for(@comment||micropost.comments.build,remote:true) do |f| %>
+      <div class="field">
+        <%= f.text_area :content, placeholder: "Write comment..." ,class:"send-comment", tabindex:"-1" %>
+        <span style="display:inline-block; ">
+          <%= f.file_field :picture %>
+        </span>
+      </div>
+      <%= f.hidden_field :micropost_id %>
+    <% end %>
+  </span>
+</span>

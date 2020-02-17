@@ -1,0 +1,21 @@
+<li id="comment-<%= comment.id %>" style="border:none; margin:0px; padding:0px;">
+  <span style="display:flex">
+    <span class="gravatar-icon">
+      <%= gravatar_for comment.user %>
+    </span>
+    <span class="content">
+      <%= comment.content %>
+      <span style="display:block">
+        <%= image_tag comment.picture.url if comment.picture? %>
+      </span>
+    </span>
+  </span>
+  <span class="timestamp">
+    <%= time_ago_in_words(comment.created_at) %> ago.
+    <% if current_user?(comment.user) %>
+      <%= link_to "edit", edit_comment_url(comment.id), remote:true%>
+      <%= link_to "delete", comment, method: :delete, remote:true,
+                                       data: { confirm: "You sure?" } %>
+    <% end %>
+  </span>
+</li>

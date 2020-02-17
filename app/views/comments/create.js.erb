@@ -1,0 +1,7 @@
+<%if @comment.id.present?%>
+  $("#micropost-<%= @micropost.id%> .comments").append($(`<%= render @comment%>`)); 
+  $("#micropost-<%= @micropost.id%> textarea").val('');
+  $("#micropost-<%= @micropost.id%> #comment_picture").val('');
+  $("#micropost-<%= @micropost.id%> #comment-count").empty();
+  $("#micropost-<%= @micropost.id%> #comment-count").append(<%= @micropost.comments.count%> + " bình luận")
+<% end %>
